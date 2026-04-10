@@ -7,33 +7,43 @@
 
   <!-- Google Tag Manager -->
   <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    (function(w,d,s,l,i){
+      w[l]=w[l]||[];
+      w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+      var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+      j.async=true;
+      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+      f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MJ3NK86X');
   </script>
   <!-- End Google Tag Manager -->
 
+  <!-- Tracking + Redirect -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'springbig_join_click',
-      destination: 'springbig_join',
-      campaign: 'sms_reoptin',
-      source: 'text_message'
-    });
+    window.addEventListener('load', function () {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'springbig_join_click',
+        destination: 'springbig_join',
+        campaign: 'sms_reoptin',
+        source: 'text_message'
+      });
 
-    setTimeout(function () {
-      window.location.href = 'https://enrollnow.vip/join/42514';
-    }, 1000);
+      // give GA time to send event before redirect
+      setTimeout(function () {
+        window.location.href = 'https://enrollnow.vip/join/42514';
+      }, 1200);
+    });
   </script>
+
 </head>
+
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJ3NK86X"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
 
