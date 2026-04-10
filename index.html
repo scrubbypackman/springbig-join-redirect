@@ -7,22 +7,21 @@
 
   <!-- Google Tag Manager -->
   <script>
-    (function(w,d,s,l,i){
-      w[l]=w[l]||[];
-      w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-      var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
-      j.async=true;
-      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-      f.parentNode.insertBefore(j,f);
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MJ3NK86X');
   </script>
   <!-- End Google Tag Manager -->
 
-  <!-- Tracking + Redirect -->
   <script>
     window.addEventListener('load', function () {
+
+      // Ensure dataLayer exists
       window.dataLayer = window.dataLayer || [];
+
+      // Push custom event (for GTM trigger)
       window.dataLayer.push({
         event: 'springbig_join_click',
         destination: 'springbig_join',
@@ -30,23 +29,36 @@
         source: 'text_message'
       });
 
-      // give GA time to send event before redirect
+      // Direct GA4 fallback (VERY important)
+      if (window.gtag) {
+        gtag('event', 'springbig_join_click', {
+          destination: 'springbig_join',
+          campaign: 'sms_reoptin',
+          source: 'text_message',
+          transport_type: 'beacon'
+        });
+      }
+
+      // Delay redirect long enough for GA to fire
       setTimeout(function () {
         window.location.href = 'https://enrollnow.vip/join/42514';
-      }, 1200);
+      }, 2000); // 2 seconds = safe buffer
+
     });
   </script>
 
 </head>
 
 <body>
+
   <!-- Google Tag Manager (noscript) -->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MJ3NK86X"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   <p>Redirecting...</p>
+
 </body>
 </html>
